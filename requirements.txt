@@ -1,0 +1,7 @@
+##Project Organization
+##yfinance
+pandas
+numpy
+matplotlib
+seaborn
+streamlit
