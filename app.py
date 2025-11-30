@@ -33,10 +33,18 @@ if run_button:
     # Calls functions from src/data_loader and src/data_processor (Criteria 3, 4, 5)
     with st.spinner('Fetching and processing data...'):
         price_data = load_historical_data(tickers, start_date, end_date)
+        import traceback # این خط را بالای فایل اضافه کن
+
+# ... داخل کد ...
+try:
+    # همان کدهای قبلی برای دانلود دیتا
+except Exception as e:
+    st.error(f"Error Details: {e}")
+    st.code(traceback.format_exc()) # این خط کل مسیر خطا را نشان می‌دهد
         
-        if price_data.empty:
-            st.error("Could not load financial data. Check dates or network connection.")
-            st.stop()
+        #if price_data.empty:
+           # st.error("Could not load financial data. Check dates or network connection.")
+            #st.stop()
             
         analysis_results = calculate_financial_metrics(price_data)
         volatility_df = analysis_results['volatility']
